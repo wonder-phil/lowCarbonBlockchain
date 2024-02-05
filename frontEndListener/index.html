@@ -1,0 +1,31 @@
+
+<!--This page will contain a textbox that will take in user input and submit to localhost port 4123 via POST that after a few seconds will recieve a response that we will display below.-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Input Form</title>
+  <script>
+    function submitForm() {
+      const input = document.getElementById("input").value;
+      const xhr = new XMLHttpRequest();
+      let t = document.URL + "test?heads=" + input;
+      xhr.open("GET", t, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          document.getElementById("response").innerHTML = this.responseText;
+        }
+      };
+      xhr.send(JSON.stringify({ input: input }));
+    }
+  </script>
+</head>
+<body>
+  <form>
+    <label for="input">Enter your input:</label>
+    <input type="text" id="input" name="input">
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+  <div id="response"></div>
+</body>
+</html>

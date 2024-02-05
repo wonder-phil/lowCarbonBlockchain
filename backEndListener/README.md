@@ -1,0 +1,1 @@
+This directory contains the "backend" listener that sits on every namespace. Listening on port 7070 for a post request to heads.Once it gets a request, it spawns a kubernetes pod using the coin flipper image and returns the response to the sender. Ideally, this works alongside skupper. Skupper would have chosen a random namespace and directed the instruction here.

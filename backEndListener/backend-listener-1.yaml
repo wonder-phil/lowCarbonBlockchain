@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-listener-1
+  namespace: ns1
+  labels:
+    app: backend-listener-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-listener-1
+  template:
+    metadata:
+      labels:
+        app: backend-listener-1
+    spec:
+      serviceAccountName: my-service-account
+      containers:
+      - name: backend-listener-1
+        image: gemajlia/skupper-backend-listener:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7070
+      restartPolicy: Always

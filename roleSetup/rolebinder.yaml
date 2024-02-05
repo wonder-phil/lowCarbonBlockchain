@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-lister-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["get", "list", "create", "watch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-lister-rolebinding
+subjects:
+- kind: ServiceAccount
+  name: my-service-account
+roleRef:
+  kind: Role
+  name: pod-lister-role
+  apiGroup: rbac.authorization.k8s.io

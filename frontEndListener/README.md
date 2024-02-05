@@ -1,0 +1,2 @@
+This directory contains the Dockerfile and kubernetes yaml files in order to spawn the frontend listener for typing in the number of heads.
+The image is on DockerHub with tag gemajlia/basicwebcontainer:latest

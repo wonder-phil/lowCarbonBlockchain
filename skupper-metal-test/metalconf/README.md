@@ -1,0 +1,1 @@
+This YAML can be used if wanting to test Skupper locally. This sets up the load balancer on kubernetes to allow for generating a local IP for containers.
